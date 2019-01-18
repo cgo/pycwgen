@@ -32,18 +32,19 @@ Smooth attack and release angles, to reduce sound harshness:
 Usage: pycwgen [OPTIONS]
 
 Options:
-  -i, --input FILENAME  Input text file (defaults to stdin)
-  -t, --text TEXT       Input text. Overrides --input.
-  -s, --speed INTEGER   Speed, in words per minute (default: 12)
-  --tone INTEGER        Tone frequency, in Hz (default: 600)
-  -o, --output PATH     Name of the output file
-  -f, --format TEXT     Output format. Use --list-formats to see the available
-                        formats
-  --subtype TEXT        Output format sub-type
-  --list-formats        List the available formats and exit
-  --list-subtypes TEXT  List the available sub-types for the specified format
-                        and exit
-  --help                Show this message and exit.
+  -i, --input FILENAME    Input text file (defaults to stdin)
+  -t, --text TEXT         Input text. Overrides --input.
+  -s, --speed INTEGER     Speed, in words per minute (default: 12)
+  --spacing_factor FLOAT  Letter spacing multiplicative factor (default: 1.0)
+  --tone INTEGER          Tone frequency, in Hz (default: 600)
+  -o, --output PATH       Name of the output file
+  -f, --format TEXT       Output format. Use --list-formats to see the
+                          available formats
+  --subtype TEXT          Output format sub-type
+  --list-formats          List the available formats and exit
+  --list-subtypes TEXT    List the available sub-types for the specified
+                          format and exit
+  --help                  Show this message and exit.
 ```
 
 
