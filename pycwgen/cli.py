@@ -13,6 +13,8 @@ from .morse import stream_morse_code
               help='Input text. Overrides --input.')
 @click.option('--speed', '-s', type=int, default=12,
               help='Speed, in words per minute (default: 12)')
+@click.option('--spacing_factor', 'letter_space_factor', type=float, default=1.0,
+              help='Letter spacing multiplicative factor (default: 1.0)')
 @click.option('--tone', type=int, default=600,
               help='Tone frequency, in Hz (default: 600)')
 @click.option('--output', '-o', 'output_file',
@@ -28,7 +30,7 @@ from .morse import stream_morse_code
               help='List the available sub-types for the specified '
               'format and exit')
 def cli(input_file, input_text, speed, tone, output_file, output_format,
-        output_subtype, list_formats, list_subtypes):
+        output_subtype, list_formats, list_subtypes, letter_space_factor):
 
     if list_formats:
         for key, value in soundfile.available_formats().items():
@@ -50,7 +52,7 @@ def cli(input_file, input_text, speed, tone, output_file, output_format,
         format=output_format)
 
     with soundfile.SoundFile(output_file, 'w', **options) as fp:
-        stream_morse_code(fp, input_text, wpm=speed, tone=tone)
+        stream_morse_code(fp, input_text, wpm=speed, tone=tone, letter_space_factor=letter_space_factor)
 
 
 cli()

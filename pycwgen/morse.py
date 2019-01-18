@@ -78,18 +78,18 @@ def generate_morse_code(text, wpm, tone=600):
     return numpy.concatenate(samples)
 
 
-def stream_morse_code(fp, text, wpm, tone=600):
+def stream_morse_code(fp, text, wpm, tone=600, letter_space_factor = 1.0):
     text = normalize_text(text)
-    for sample in _generate_morse_samples(text, wpm, tone):
+    for sample in _generate_morse_samples(text, wpm, tone, letter_space_factor):
         fp.write(sample)
 
 
-def _generate_morse_samples(text, wpm, tone):
+def _generate_morse_samples(text, wpm, tone, letter_space_factor = 1.0):
     dit_duration = 1.2 / wpm
     dah_duration = dit_duration * 3
     symbol_space_duration = dit_duration
-    letter_space_duration = (dit_duration * 3) - symbol_space_duration
-    word_space_duration = (dit_duration * 7) - letter_space_duration
+    letter_space_duration = ((dit_duration * 3) - symbol_space_duration) * letter_space_factor
+    word_space_duration = (dit_duration * 7) * letter_space_factor - letter_space_duration
 
     audio_params = {
         'attack': dit_duration / 10,
